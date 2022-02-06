@@ -1,8 +1,12 @@
+export const CellContents = {
+  Empty: 'Empty',
+};
+
 export class Cell {
   constructor(x, y) {
     this.x = x;
     this.y = y;
-    this.contents = ' ';
+    this.contents = CellContents.Empty;
   }
 }
 
@@ -20,8 +24,4 @@ export class Grid {
       this.rows[y] = row;
     }
   }
-}
-
-export function createEmptyGrid(width, height) {
-  return new Grid(width, height);
 }

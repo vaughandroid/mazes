@@ -1,3 +1,12 @@
+import {CellContents} from "./grid.js";
+
+function renderCell(cell) {
+  switch (cell.contents) {
+    case CellContents.Empty: return ' ';
+    default: throw Error(`Unknown cell contents: ${cell.contents}`);
+  }
+}
+
 export function renderGrid(grid) {
   let output = '';
   function addTopBottomBorder() {
@@ -13,7 +22,7 @@ export function renderGrid(grid) {
   grid.rows.forEach(row => {
     output = output + '|';
     row.forEach(cell => {
-      output = output + cell.contents;
+      output = output + renderCell(cell);
     })
     output = output + '|\n';
   });

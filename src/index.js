@@ -1,8 +1,8 @@
 import logUpdate from 'log-update';
-import {createEmptyGrid} from "./grid.js";
+import {Grid} from "./grid.js";
 import {renderGrid} from "./render.js";
 
-const grid = createEmptyGrid(20, 10);
+const grid = new Grid(20, 10);
 
 function main() {
   setInterval(() => {
