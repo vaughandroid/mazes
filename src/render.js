@@ -1,10 +1,8 @@
 export function renderGrid(grid) {
   let output = '';
-  const width = grid[0].length;
-
   function addTopBottomBorder() {
     output = output + '+';
-    for (let i = 0; i < width; i++) {
+    for (let i = 0; i < grid.width; i++) {
       output = output + '-';
     }
     output = output + '+\n';
@@ -12,10 +10,10 @@ export function renderGrid(grid) {
 
   addTopBottomBorder();
 
-  grid.forEach(row => {
+  grid.rows.forEach(row => {
     output = output + '|';
     row.forEach(cell => {
-      output = output + cell;
+      output = output + cell.contents;
     })
     output = output + '|\n';
   });
