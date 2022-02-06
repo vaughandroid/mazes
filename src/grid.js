@@ -1,5 +1,6 @@
 export const CellContents = {
   Empty: 'Empty',
+  Filled: 'Filled'
 };
 
 export class Cell {
@@ -23,5 +24,10 @@ export class Grid {
       }
       this.rows[y] = row;
     }
+  }
+
+  getCellAt(x, y) {
+    const row = this.rows[y];
+    return row ? row[x] : undefined;
   }
 }
