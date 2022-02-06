@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "description": "Maze generation",
   "main": "src/index.js",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -19,5 +20,8 @@
   "bugs": {
     "url": "https://github.com/vaughandroid/mazes/issues"
   },
-  "homepage": "https://github.com/vaughandroid/mazes#readme"
+  "homepage": "https://github.com/vaughandroid/mazes#readme",
+  "dependencies": {
+    "log-update": "^5.0.0"
+  }
 }
