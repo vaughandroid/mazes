@@ -1,35 +1,45 @@
-import {CellContents} from "./grid.js";
 import logUpdate from "log-update";
-
-function renderCell(cell) {
-  switch (cell.contents) {
-    case CellContents.Empty: return ' ';
-    case CellContents.Filled: return '#';
-    default: throw Error(`Unknown cell contents: ${cell.contents}`);
-  }
-}
 
 export function renderGrid(grid) {
   let output = '';
-  function addTopBottomBorder() {
-    output = output + '+';
-    for (let i = 0; i < grid.width; i++) {
-      output = output + '-';
-    }
-    output = output + '+\n';
+
+  // Top border
+  output = output + '+';
+  for (let i = 0; i < grid.width; i++) {
+    output = output + '--';
   }
+  output = output + '-+\n';
 
-  addTopBottomBorder();
-
+  // Cells & side borders
   grid.rows.forEach(row => {
+    // Left border
+    output = output + '|';
+
+    row.forEach(cell => {
+      output = output + `#${cell.walls.top ? '#' : ' '}`;
+    })
+    output = output + '#|\n';
+
     output = output + '|';
     row.forEach(cell => {
-      output = output + renderCell(cell);
+      output = output + `${cell.walls.left ? '#' : ' '} `;
     })
-    output = output + '|\n';
+    output = output + '#|\n';
   });
 
-  addTopBottomBorder();
+  // Bottom walls
+  output = output + '|';
+  for (let i = 0; i < grid.width; i++) {
+    output = output + '##';
+  }
+  output = output + '#|\n';
+
+  // Bottom border
+  output = output + '+';
+  for (let i = 0; i < grid.width; i++) {
+    output = output + '--';
+  }
+  output = output + '-+\n';
 
   logUpdate(output);
 }
