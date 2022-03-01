@@ -35,7 +35,7 @@ export class DepthFirstSearch {
   }
 
   step() {
-    if (this.visitableCells.length === 0) return;
+    if (this.visitableCells.length === 0) return false;
 
     let nextCell;
     while (nextCell === undefined) {
@@ -52,6 +52,8 @@ export class DepthFirstSearch {
     }
 
     this.visitCell(nextCell);
+
+    return true;
   }
 
   getVisitableNeighbour(cell) {
